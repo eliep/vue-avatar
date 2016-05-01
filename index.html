@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>vue-avatar</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism.min.css"/>
+    <style>
+      body {
+        padding: 15px;
+      }
+
+      .container {
+        max-width: 730px;
+      }
+
+      .jumbotron {
+        background-color: #fff;
+        text-align: center
+      }
+
+      .jumbotron #avatar {
+        display: inline-block;
+        margin-right: 7px;
+      }
+
+      .examples {
+        background-color: #eee
+      }
+
+      .default-avatar {
+        display: inline-block;
+        margin: 3px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <a href="https://github.com/eprudhomme/vue-avatar"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+    <div class="container">
+
+      <div class="row">
+
+        <div class="jumbotron">
+          <h1>
+            <avatar id="avatar" username="vue-avatar" :size="70" style="display:inline-block"></avatar>
+            vue-avatar</h1>
+
+          <p class="lead">An avatar component for vue.js</p>
+        </div>
+
+        <p/>
+
+        <h2>Description</h2>
+        <p>This component display an avatar image and if none is provided fallback to the
+        user initials.  This component is highly inspired from
+        <a href="https://github.com/wbinnssmith/react-user-avatar">react-user-avatar</a>
+        </p>
+
+        <p>
+        Rules used to compute user initials:<ul>
+          <li>divide the username on space and hyphen</li>
+          <li>use the first letter of each parts</li>
+          <li>never use more than three letters as initials</li>
+          <li>if the username is divided in more than three parts and has part
+            starting with an uppercase, skip parts starting with a lowercase.</li>
+        </ul>
+        </p>
+
+        <p/>
+
+        <h2>Installation</h2>
+
+        <pre><code class="language-html">npm install vue-avatar</code></pre>
+
+        <h2>Usage</h2>
+
+        <h3>ES6</h3>
+
+        <pre><code class="language-javascript">
+import Avatar from 'vue-avatar'
+
+export default {
+
+  components: {
+    Avatar
+  },
+
+}
+        </code></pre>
+
+        <p>After that, you can use it in your templates:</p>
+        <pre><code class="language-html">&lt;avatar username="Jane Doe"&gt;&lt;/avatar&gt;</code></pre>
+        <p>which will render to:</p>
+        <avatar username="Jane Doe"></avatar>
+
+        <h2>Props</h2>
+        <table class="table">
+        <thead><tr>
+          <th>Name</th><th>Required</th><th>Default</th><th>Type</th><th>Description</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>username</td>
+            <td> Y </td>
+            <td> - </td>
+            <td> String </td>
+            <td>The user name that will be used to compute user initial.</td><tr>
+          <tr><td>src</td>
+            <td> N </td>
+            <td> - </td>
+            <td> String </td>
+            <td>Path to the avatar image to display.</td><tr>
+          <tr><td>backgroundColor</td>
+            <td> N </td>
+            <td> - </td>
+            <td> String </td>
+            <td>The avatar background color to use if no image is provided. If none
+              is specified, a background color will be picked depending on
+              the user name length.</td><tr>
+          <tr><td>color</td>
+            <td> N </td>
+            <td> - </td>
+            <td> String </td>
+            <td>The font color used to render the user initials. If none
+              is provided, the background color is used to compute
+              the font color.</td><tr>
+          <tr><td>:lighten</td>
+            <td> N </td>
+            <td> 80 </td>
+            <td> Number </td>
+            <td>A factor by which the background color must be lightened to
+              produce the font color. Number between [-100,100].</td><tr>
+          <tr><td>:size</td>
+            <td> N </td>
+            <td> 50 </td>
+            <td> Number </td>
+            <td>The avatar size in pixel.</td><tr>
+          <tr><td>:rounded</td>
+            <td> N </td>
+            <td> true </td>
+            <td> Boolean </td>
+            <td>True if the avatar must be rounded.</td><tr>
+        </tbody>
+        </table>
+
+        <p/>
+
+        <h2>Examples</h2>
+        <table class="table">
+          <thead><tr><th></th><th>Code</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><avatar username="Hubert-Félix Thiéfaine"></avatar></td>
+              <td><pre><code class="language-html">&lt;avatar username="Hubert-Félix Thiéfaine"&gt;&lt;/avatar&gt;</code></pre></td>
+            </tr>
+
+            <tr>
+              <td><avatar username="Hubert-Félix Thiéfaine"
+                  background-color="#FFC107"
+                  :size="100"
+                  :rounded="false"
+                  :lighten="20"></avatar></td>
+              <td><pre><code class="language-html">&lt;avatar username="Hubert-Félix Thiéfaine"
+                background-color="#FFC107"
+                :size="100"
+                :rounded="false"
+                :lighten="20"&gt;&lt;/avatar&gt;</code></pre></td>
+            </tr>
+
+            <tr>
+              <td><avatar username="Hubert-Félix Thiéfaine"
+                          background-color="#FFC107"
+                          :size="100"
+                          :rounded="false"
+                          color="#fff"></avatar></td>
+              <td><pre><code class="language-html">&lt;avatar username="Hubert-Félix Thiéfaine"
+                background-color="#FFC107"
+                :size="100"
+                :rounded="false"
+                color="#fff"&gt;&lt;/avatar&gt;</code></pre></td>
+            </tr>
+
+            <tr>
+              <td><avatar username="Darth Vader"
+                  background-color="#000"
+                  :size="100"
+                  :rounded="false"></avatar></td>
+              <td><pre><code class="language-html">&lt;avatar username="Darth Vader"
+                background-color="#000"
+                :size="100"
+                :rounded="false"&gt;&lt;/avatar&gt;</code></pre></td>
+            </tr>
+
+            <tr>
+              <td><avatar username="Darth Vader"
+                  src="./example/static/darth-vader.png"
+                  :size="100"></avatar></td>
+              <td><pre><code class="language-html">&lt;avatar username="Darth Vader"
+                src="./example/static/darth-vader.png"
+                :size="100"&gt;&lt;/avatar&gt;</code></pre></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p/>
+
+        <h2>Default color</h2>
+        <p>
+        18 default background colors are available and can be seen below. The
+        background color chosen depends on the username length.
+        This way a username will always have the same background color.
+        </p>
+
+        <avatar class="default-avatar" :size="70" username="A"></avatar>
+        <avatar class="default-avatar" :size="70" username="BB"></avatar>
+        <avatar class="default-avatar" :size="70" username="CCC"></avatar>
+        <avatar class="default-avatar" :size="70" username="DDDD"></avatar>
+        <avatar class="default-avatar" :size="70" username="EEEEE"></avatar>
+        <avatar class="default-avatar" :size="70" username="FFFFFF"></avatar>
+        <avatar class="default-avatar" :size="70" username="GGGGGGG"></avatar>
+        <avatar class="default-avatar" :size="70" username="HHHHHHHH"></avatar>
+        <avatar class="default-avatar" :size="70" username="IIIIIIIII"></avatar>
+        <br/>
+        <avatar class="default-avatar" :size="70" username="JJJJJJJJJJ"></avatar>
+        <avatar class="default-avatar" :size="70" username="KKKKKKKKKKK"></avatar>
+        <avatar class="default-avatar" :size="70" username="LLLLLLLLLLLL"></avatar>
+        <avatar class="default-avatar" :size="70" username="MMMMMMMMMMMMM"></avatar>
+        <avatar class="default-avatar" :size="70" username="NNNNNNNNNNNNNN"></avatar>
+        <avatar class="default-avatar" :size="70" username="OOOOOOOOOOOOOOO"></avatar>
+        <avatar class="default-avatar" :size="70" username="PPPPPPPPPPPPPPPP"></avatar>
+        <avatar class="default-avatar" :size="70" username="QQQQQQQQQQQQQQQQQ"></avatar>
+        <avatar class="default-avatar" :size="70" username="RRRRRRRRRRRRRRRRRR"></avatar>
+
+        <p/>
+
+      </div>
+    </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/prism-javascript.min.js"></script>
+  <script src="./example/dist/build.js"></script>
+  </body>
+</html>
