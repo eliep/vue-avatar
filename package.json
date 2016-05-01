@@ -1,7 +1,17 @@
 {
   "name": "vue-avatar",
+  "version": "1.0.0",
   "description": "Avatar component for vue.js",
   "author": "eprudhomme@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliep/vue-avatar.git"
+  },
+  "keywords": [
+    "avatar",
+    "user",
+    "vue"
+  ],
   "scripts": {
     "dev": "webpack-dev-server --inline",
     "build:example": "cross-env NODE_ENV=production webpack --progress --hide-modules",
