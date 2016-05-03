@@ -193,10 +193,10 @@ export default {
 
             <tr>
               <td><avatar username="Darth Vader"
-                  src="./example/static/darth-vader.png"
+                  src="./static/darth-vader.png"
                   :size="100"></avatar></td>
               <td><pre><code class="language-html">&lt;avatar username="Darth Vader"
-                src="./example/static/darth-vader.png"
+                src="./static/darth-vader.png"
                 :size="100"&gt;&lt;/avatar&gt;</code></pre></td>
             </tr>
           </tbody>
@@ -235,8 +235,17 @@ export default {
 
       </div>
     </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/prism-javascript.min.js"></script>
-  <script src="./example/dist/build.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/components/prism-javascript.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.min.js'></script>
+    <script src='./dist/vue-avatar.min.js'></script>
+    <script type='text/javascript'>
+      new Vue({
+        el: 'body',
+        components: {
+          "avatar": Avatar.Avatar
+        }
+      })
+    </script>
   </body>
 </html>
