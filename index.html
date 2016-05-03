@@ -74,11 +74,13 @@
         <pre><code class="language-html">npm install vue-avatar</code></pre>
 
         <h2>Usage</h2>
+        <p>vue-avatar is a UMD module, which can be used as a module in both CommonJS and AMD modular environments.
+          When in non-modular environment, Avatar will be registered as a global variable.</p>
 
         <h3>ES6</h3>
 
         <pre><code class="language-javascript">
-import Avatar from 'vue-avatar'
+import Avatar from 'vue-avatar/dist/Avatar'
 
 export default {
 
@@ -93,6 +95,36 @@ export default {
         <pre><code class="language-html">&lt;avatar username="Jane Doe"&gt;&lt;/avatar&gt;</code></pre>
         <p>which will render to:</p>
         <avatar username="Jane Doe"></avatar>
+
+
+
+        <h3>ES5</h3>
+
+        <pre><code class="language-javascript">
+var Vue = require('vue')
+var Avatar = require('vue-avatar')
+
+var YourComponent = Vue.extend({
+  components: {
+    'avatar': Avatar.Avatar
+  }
+})
+        </code></pre>
+
+
+
+        <h3>Browser</h3>
+
+        <pre><code class="language-html">
+&lt;script src="path/to/vue/vue.min.js"&gt;&lt;/script&gt;
+&lt;script src="path/to/vue-avatar/dist/vue-avatar.min.js"&gt;&lt;/script&gt;
+
+new Vue({
+  components: {
+    'avatar': Avatar.Avatar
+  }
+})
+        </code></pre>
 
         <h2>Props</h2>
         <table class="table">

@@ -20,11 +20,13 @@ You can find a few examples and the documentation [here](https://eliep.github.io
 `npm install vue-avatar`
 
 ## Usage
+vue-avatar is a UMD module, which can be used as a module in both CommonJS and AMD modular environments.
+When in non-modular environment, Avatar will be registered as a global variable.</p>
 
 ### ES6
 ```js
 
-import Avatar from 'vue-avatar'
+import Avatar from 'vue-avatar/dist/Avatar'
 
 export default {
   ...
@@ -41,8 +43,34 @@ After that, you can use it in your templates:
 ```
 
 ### ES5
+```js
+var Vue = require('vue')
+var Avatar = require('vue-avatar')
+
+var YourComponent = Vue.extend({
+  ...
+  components: {
+    'avatar': Avatar.Avatar
+  },
+  ...
+})
+```
 
 ### Browser
+
+```
+<script src="path/to/vue/vue.min.js"></script>
+<script src="path/to/vue-avatar/dist/vue-avatar.min.js"></script>
+
+new Vue({
+  ...
+  components: {
+    'avatar': Avatar.Avatar
+  },
+  ...
+})
+```
+
 
 ## Props
 <table class="table">
