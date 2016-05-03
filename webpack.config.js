@@ -2,11 +2,13 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './example/main.js',
+  entry: './src/',
   output: {
-    path: path.resolve(__dirname, './example/dist'),
-    publicPath: '/example/dist/',
-    filename: 'build.js'
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/example/',
+    filename: 'vue-avatar.min.js',
+    library: 'Avatar',
+    libraryTarget: 'umd'
   },
   resolve: {
     extensions: ['', '.js', '.vue'],
