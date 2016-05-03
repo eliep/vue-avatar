@@ -129,8 +129,8 @@ npm install
 # serve with hot reload at localhost:8080
 npm run dev
 
-# build example
-npm run build:example
+# build
+npm run build
 ```
 ## Test
 ``` bash
