@@ -14,10 +14,10 @@
   ],
   "scripts": {
     "dev": "webpack-dev-server --inline",
-    "build:example": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.min.js",
     "unit": "karma start test/unit/karma.conf.js --single-run"
   },
-  "main": "src/Avatar.vue",
+  "main": "dist/vue-avatar.min.js",
   "dependencies": {
     "vue": "^1.0.18",
     "babel-runtime": "^5.8.0"
@@ -28,6 +28,7 @@
     "babel-plugin-transform-runtime": "^6.0.0",
     "babel-preset-es2015": "^6.0.0",
     "babel-preset-stage-2": "^6.0.0",
+    "copy-webpack-plugin": "^1.1.1",
     "cross-env": "^1.0.6",
     "css-loader": "^0.23.0",
     "file-loader": "^0.8.4",
