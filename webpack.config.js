@@ -1,6 +1,8 @@
 var path = require('path')
 var webpack = require('webpack')
 
+var projectRoot = path.resolve(__dirname, '.')
+
 module.exports = {
   entry: './src/',
   output: {
@@ -21,6 +23,20 @@ module.exports = {
     root: path.join(__dirname, 'node_modules'),
   },
   module: {
+    preLoaders: [
+      {
+        test: /\.vue$/,
+        loader: 'eslint',
+        include: projectRoot,
+        exclude: /node_modules/
+      },
+      {
+        test: /\.js$/,
+        loader: 'eslint',
+        include: projectRoot,
+        exclude: /node_modules/
+      }
+    ],
     loaders: [
       {
         test: /\.vue$/,
@@ -48,6 +64,9 @@ module.exports = {
         }
       }
     ]
+  },
+  eslint: {
+    formatter: require('eslint-friendly-formatter')
   },
   devServer: {
     historyApiFallback: true,
