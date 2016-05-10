@@ -82,42 +82,42 @@ new Vue({
     <td> Y </td>
     <td> - </td>
     <td> String </td>
-    <td>The user name that will be used to compute user initial.</td><tr>
+    <td>The user name that will be used to compute user initial.</td></tr>
   <tr><td>src</td>
     <td> N </td>
     <td> - </td>
     <td> String </td>
-    <td>Path to the avatar image to display.</td><tr>
+    <td>Path to the avatar image to display.</td></tr>
   <tr><td>backgroundColor</td>
     <td> N </td>
     <td> - </td>
     <td> String </td>
     <td>The avatar background color to use if no image is provided. If none
       is specified, a background color will be picked depending on
-      the user name length.</td><tr>
+      the user name length.</td></tr>
   <tr><td>color</td>
     <td> N </td>
     <td> - </td>
     <td> String </td>
     <td>The font color used to render the user initials. If none
       is provided, the background color is used to compute
-      the font color.</td><tr>
+      the font color.</td></tr>
   <tr><td>:lighten</td>
     <td> N </td>
     <td> 80 </td>
     <td> Number </td>
     <td>A factor by which the background color must be lightened to
-      produce the font color. Number between [-100,100].</td><tr>
+      produce the font color. Number between [-100,100].</td></tr>
   <tr><td>:size</td>
     <td> N </td>
     <td> 50 </td>
     <td> Number </td>
-    <td>The avatar size in pixel.</td><tr>
+    <td>The avatar size in pixel.</td></tr>
   <tr><td>:rounded</td>
     <td> N </td>
     <td> true </td>
     <td> Boolean </td>
-    <td>True if the avatar must be rounded.</td><tr>
+    <td>True if the avatar must be rounded.</td></tr>
 </tbody>
 </table>
 
@@ -126,15 +126,15 @@ new Vue({
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
+# serve gh pages with hot reload at localhost:8080/gh-pages
+npm start
 
 # build
 npm run build
 ```
 ## Test
 ``` bash
-npm run unit
+npm test
 ```
 
 ## License

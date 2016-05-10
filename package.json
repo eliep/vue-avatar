@@ -13,9 +13,9 @@
     "vue"
   ],
   "scripts": {
-    "dev": "webpack-dev-server --inline",
-    "build": "cross-env NODE_ENV=production webpack --config build/webpack.min.cong.js",
-    "unit": "karma start test/unit/karma.conf.js --single-run"
+    "start": "webpack-dev-server --inline --config build/webpack.base.conf.js",
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.min.conf.js",
+    "test": "karma start test/unit/karma.conf.js --single-run"
   },
   "main": "dist/vue-avatar.min.js",
   "dependencies": {
