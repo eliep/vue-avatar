@@ -13,3 +13,4 @@ fi
 git subtree push --prefix gh-pages origin gh-pages # Deploy gh-pages
 git push origin master
 git stash pop # And restore the changes
+echo 'Deployed'
