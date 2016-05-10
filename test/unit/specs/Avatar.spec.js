@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Avatar from 'src/Avatar'
 
 describe('Avatar.vue', () => {
-
   it('should divide name in parts on both space and hyphen', () => {
     expect(Avatar.methods.initial('Hubert Felix')).to.equal('HF')
     expect(Avatar.methods.initial('Hubert-Felix')).to.equal('HF')
@@ -31,11 +30,11 @@ describe('Avatar.vue', () => {
     const username = 'Hubert-Félix'
 
     const vm = new Vue({
-      template: '<div><avatar username="'+username+'"></avatar></div>',
+      template: `<div><avatar username="${username}"></avatar></div>`,
       components: { Avatar }
     }).$mount()
 
-    const initial = vm.$children[0].initial(username);
+    const initial = vm.$children[0].initial(username)
     expect(initial).to.equal('HF')
     expect(vm.$el.querySelector('#avatar > span').textContent).to.contain(initial)
   })
@@ -44,16 +43,16 @@ describe('Avatar.vue', () => {
     const username = 'Hubert-Félix'
 
     const vm = new Vue({
-      template: '<div><avatar username="'+username+'" src="path/to/img"></avatar></div>',
+      template: `<div><avatar username="${username}" src="path/to/img"></avatar></div>`,
       components: { Avatar }
     }).$mount()
 
-    const initial = vm.$children[0].initial(username);
+    const initial = vm.$children[0].initial(username)
     expect(initial).to.equal('HF')
 
     expect(vm.$el.querySelector('#avatar > span')).to.be.null
     let av = vm.$el.querySelector('#avatar')
-    let background = av.style.background// window.getComputedStyle(av,null).width
+    let background = av.style.background // window.getComputedStyle(av,null).width
     expect(background).to.contain('path/to/img')
   })
 })
