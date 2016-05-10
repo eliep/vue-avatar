@@ -3,3 +3,5 @@ node_modules/
 example/
 test/
 npm-debug.log
+gh-pages/
+bin/
