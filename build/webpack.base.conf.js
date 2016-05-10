@@ -1,12 +1,12 @@
 var path = require('path')
 var webpack = require('webpack')
 
-var projectRoot = path.resolve(__dirname, '.')
+var projectRoot = path.resolve(__dirname, '../')
 
 module.exports = {
   entry: './src/',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, '../dist'),
     publicPath: '/example/',
     filename: 'vue-avatar.min.js',
     library: 'Avatar',
@@ -16,7 +16,7 @@ module.exports = {
     extensions: ['', '.js', '.vue'],
     fallback: [path.join(__dirname, 'node_modules')],
     alias: {
-      'src': path.resolve(__dirname, './src')
+      'src': path.resolve(__dirname, '../src')
     }
   },
   resolveLoader: {
