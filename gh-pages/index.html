@@ -45,7 +45,7 @@
           <h1>
             <avatar id="avatar" username="vue-avatar" :size="70"
                     style="display:inline-block"
-                    @initials="initials"></avatar>
+                    @computedInitials="initials"></avatar>
             vue-avatar</h1>
 
           <p class="lead">An avatar component for vue.js</p>
@@ -141,6 +141,11 @@ new Vue({
             <td> - </td>
             <td> String </td>
             <td>The user name that will be used to compute user initial.</td></tr>
+          <tr><td>initials</td>
+            <td> N </td>
+            <td> - </td>
+            <td> String </td>
+            <td>Force the displayed initials by overriding the computed ones.</td></tr>
           <tr><td>src</td>
             <td> N </td>
             <td> - </td>
@@ -181,6 +186,24 @@ new Vue({
 
         <p/>
 
+        <h2>Event</h2>
+        <table class="table">
+          <thead><tr>
+            <th>Name</th><th>Arguments</th><th>Description</th>
+          </tr></thead>
+          <tbody>
+          <tr><td>computedInitials</td>
+            <td><ul>
+              <li>username: the value of the username props</li>
+              <li>initials: the value of the computed initials or the initial props if any</li>
+            </ul></td>
+            <td>This event is trigger when the component is ready with component
+              username and initial.</td></tr>
+          </tbody>
+        </table>
+
+        <p/>
+
         <h2>Examples</h2>
         <table class="table">
           <thead><tr><th></th><th>Code</th></tr></thead>
@@ -209,7 +232,7 @@ new Vue({
                           :size="100"
                           :rounded="false"
                           color="#fff"
-                          @initials="initials"></avatar></td>
+                          @computedInitials="initials"></avatar></td>
               <td><pre><code class="language-html">&lt;avatar username="Hubert-Félix Thiéfaine"
                 background-color="#FFC107"
                 :size="100"
@@ -222,7 +245,7 @@ new Vue({
                   background-color="#000"
                   :size="100"
                   :rounded="false"
-                  @initials="initials"></avatar></td>
+                  @computedInitials="initials"></avatar></td>
               <td><pre><code class="language-html">&lt;avatar username="Darth Vader"
                 background-color="#000"
                 :size="100"

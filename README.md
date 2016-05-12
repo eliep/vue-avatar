@@ -83,6 +83,11 @@ new Vue({
     <td> - </td>
     <td> String </td>
     <td>The user name that will be used to compute user initial.</td></tr>
+  <tr><td>initials</td>
+    <td> N </td>
+    <td> - </td>
+    <td> String </td>
+    <td>Force the displayed initials by overriding the computed ones.</td></tr>
   <tr><td>src</td>
     <td> N </td>
     <td> - </td>
@@ -120,6 +125,23 @@ new Vue({
     <td>True if the avatar must be rounded.</td></tr>
 </tbody>
 </table>
+
+## Event
+<table class="table">
+<thead><tr>
+  <th>Name</th><th>Arguments</th><th>Description</th>
+</tr></thead>
+<tbody>
+  <tr><td>computedInitials</td>
+    <td><ul>
+      <li>username: the value of the username props</li>
+      <li>initials: the value of the computed initials or the initial props if any</li>
+    </ul></td>
+    <td>This event is trigger when the component is ready with component
+        username and initial.</td></tr>
+</tbody>
+</table>
+
 
 ## Build Setup
 ``` bash
