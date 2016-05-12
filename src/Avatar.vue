@@ -12,6 +12,9 @@ export default {
       type: String,
       required: true
     },
+    initials: {
+      type: String
+    },
     backgroundColor: {
       type: String
     },
@@ -43,6 +46,10 @@ export default {
         '#4CAF50', '#8BC34A', '#CDDC39', /* '#FFEB3B' ,*/ '#FFC107',
         '#FF9800', '#FF5722', '#795548', '#9E9E9E', '#607D8B']
     }
+  },
+
+  ready () {
+    this.$dispatch('initials', this.username, this.userInitial)
   },
 
   computed: {
@@ -92,7 +99,8 @@ export default {
     },
 
     userInitial () {
-      return this.initial(this.username)
+      const initials = this.initials || this.initial(this.username)
+      return initials
     }
   },
 
