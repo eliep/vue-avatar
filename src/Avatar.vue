@@ -49,7 +49,7 @@ export default {
   },
 
   ready () {
-    this.$dispatch('initials', this.username, this.userInitial)
+    this.$dispatch('computedInitials', this.username, this.userInitial)
   },
 
   computed: {
