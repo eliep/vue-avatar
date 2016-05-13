@@ -45,7 +45,7 @@
           <h1>
             <avatar id="avatar" username="vue-avatar" :size="70"
                     style="display:inline-block"
-                    @computedInitials="initials"></avatar>
+                    @avatar-initials="initials"></avatar>
             vue-avatar</h1>
 
           <p class="lead">An avatar component for vue.js</p>
@@ -192,11 +192,9 @@ new Vue({
             <th>Name</th><th>Arguments</th><th>Description</th>
           </tr></thead>
           <tbody>
-          <tr><td>computedInitials</td>
-            <td><ul>
-              <li>username: the value of the username props</li>
-              <li>initials: the value of the computed initials or the initial props if any</li>
-            </ul></td>
+          <tr><td>@avatar-initials</td>
+            <td>username (the value of the username props),
+              initials (the value of the computed initials or the initials props if any)</td>
             <td>This event is trigger when the component is ready with component
               username and initial.</td></tr>
           </tbody>
@@ -232,7 +230,7 @@ new Vue({
                           :size="100"
                           :rounded="false"
                           color="#fff"
-                          @computedInitials="initials"></avatar></td>
+                          @avatar-initials="initials"></avatar></td>
               <td><pre><code class="language-html">&lt;avatar username="Hubert-Félix Thiéfaine"
                 background-color="#FFC107"
                 :size="100"
@@ -245,7 +243,7 @@ new Vue({
                   background-color="#000"
                   :size="100"
                   :rounded="false"
-                  @computedInitials="initials"></avatar></td>
+                  @avatar-initials="initials"></avatar></td>
               <td><pre><code class="language-html">&lt;avatar username="Darth Vader"
                 background-color="#000"
                 :size="100"
@@ -316,7 +314,10 @@ new Vue({
           'avatar': Avatar.Avatar,
           'rules': {
             props: ['items'],
-            template: 'For example:<ul id="example-1"><li v-for="item in items">{{ item.username }} becomes {{ item.initials }}</li></ul>'
+            template: 'For example:' +
+              '<ul id="example-1">' +
+                '<li v-for="item in items"><b>{{ item.username }}</b> becomes <b>{{ item.initials }}</b></li>' +
+              '</ul>'
           }
         },
 

@@ -48,8 +48,8 @@ export default {
     }
   },
 
-  ready () {
-    this.$dispatch('computedInitials', this.username, this.userInitial)
+  compiled () {
+    this.$emit('avatar-initials', this.username, this.userInitial)
   },
 
   computed: {

@@ -132,13 +132,11 @@ new Vue({
   <th>Name</th><th>Arguments</th><th>Description</th>
 </tr></thead>
 <tbody>
-  <tr><td>computedInitials</td>
-    <td><ul>
-      <li>username: the value of the username props</li>
-      <li>initials: the value of the computed initials or the initial props if any</li>
-    </ul></td>
+  <tr><td>@avatar-initials</td>
+    <td>username (the value of the username props),
+      initials (the value of the computed initials or the initials props if any)</td>
     <td>This event is trigger when the component is ready with component
-        username and initial.</td></tr>
+      username and initial.</td></tr>
 </tbody>
 </table>
 
