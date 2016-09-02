@@ -80,7 +80,7 @@ export default {
     },
 
     isImage () {
-      return this.src !== undefined
+      return this.src !== undefined && this.src !== ''
     },
 
     style () {
