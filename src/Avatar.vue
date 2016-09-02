@@ -74,12 +74,11 @@ export default {
 
     style () {
       const style = {
+        flex: 'none',
+        margin: this.margin || 0,
         width: this.size + 'px',
         height: this.size + 'px',
-        borderRadius: this.borderRadius || (this.rounded ? '50%' : 0),
-        margin: this.margin || 0,
-        textAlign: 'center',
-        verticalAlign: 'middle'
+        borderRadius: this.borderRadius || (this.rounded ? '50%' : 0)
       }
 
       const imgBackgroundAndFontStyle = {
@@ -93,7 +92,10 @@ export default {
         font: Math.floor(this.size / 2.5) + 'px/100px Helvetica, Arial, sans-serif',
         fontWeight: 'bold',
         color: this.fontColor,
-        lineHeight: (this.size + Math.floor(this.size / 20)) + 'px'
+        // lineHeight: (this.size + Math.floor(this.size / 20)) + 'px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
       }
 
       const backgroundAndFontStyle = (this.isImage)
