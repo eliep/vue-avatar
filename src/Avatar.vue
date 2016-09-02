@@ -1,7 +1,7 @@
 <template>
-  <div><div id="avatar" v-bind:style="style">
+  <div id="avatar" v-bind:style="style">
     <span v-if="!this.src">{{ userInitial }}</span>
-  </div></div>
+  </div>
 </template>
 
 <script type="text/babel">
