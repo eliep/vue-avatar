@@ -76,21 +76,19 @@ export default {
       const style = {
         flex: 'none',
         margin: this.margin || 0,
-        width: this.size + 'px',
-        height: this.size + 'px',
+        width: `${this.size}px`,
+        height: `${this.size}px`,
         borderRadius: this.borderRadius || (this.rounded ? '50%' : 0)
       }
 
       const imgBackgroundAndFontStyle = {
-        background: 'url(' + this.src + ') no-repeat',
-        backgroundSize: this.size + 'px ' + this.size + 'px',
-        backgroundOrigin: 'content-box'
+        background: `url(${this.src}) 0% 0% / 100% 100% no-repeat content-box`
       }
 
       const initialBackgroundAndFontStyle = {
         backgroundColor: this.background,
         fontFamily: 'Helvetica, Arial, sans-serif',
-        fontSize: (this.size / this.userInitial.length) + 'px',
+        fontSize: `${this.size / this.userInitial.length}px`,
         fontWeight: 'bold',
         color: this.fontColor,
         display: 'flex',
