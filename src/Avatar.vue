@@ -32,6 +32,9 @@ export default {
       type: Boolean,
       default: true
     },
+    borderRadius: {
+      type: String
+    },
     lighten: {
       type: Number,
       default: 80
@@ -70,7 +73,7 @@ export default {
       const style = {
         width: this.size + 'px',
         height: this.size + 'px',
-        borderRadius: (this.rounded) ? '50%' : 0,
+        borderRadius: this.borderRadius || (this.rounded ? '50%' : 0),
         textAlign: 'center',
         verticalAlign: 'middle'
       }
