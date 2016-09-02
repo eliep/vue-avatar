@@ -35,6 +35,9 @@ export default {
     borderRadius: {
       type: String
     },
+    margin: {
+      type: String
+    },
     lighten: {
       type: Number,
       default: 80
@@ -74,6 +77,7 @@ export default {
         width: this.size + 'px',
         height: this.size + 'px',
         borderRadius: this.borderRadius || (this.rounded ? '50%' : 0),
+        margin: this.margin || 0,
         textAlign: 'center',
         verticalAlign: 'middle'
       }
