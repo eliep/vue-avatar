@@ -22,7 +22,7 @@ export default {
       type: String
     },
     size: {
-      type: Number,
+      type: [String, Number],
       default: 50
     },
     src: {
@@ -59,6 +59,17 @@ export default {
   },
 
   computed: {
+    sizeValue () {
+      return parseFloat(this.size)
+    },
+
+    sizeUnit () {
+      if (typeof this.size === 'number') {
+        return 'px'
+      }
+      return this.size.replace(/[.0-9]/g, '') || 'px'
+    },
+
     background () {
       return this.backgroundColor ||
               this.randomBackgroundColor(this.username.length, this.backgroundColors)
@@ -76,8 +87,8 @@ export default {
       const style = {
         flex: 'none',
         margin: this.margin || 0,
-        width: `${this.size}px`,
-        height: `${this.size}px`,
+        width: `${this.sizeValue}${this.sizeUnit}`,
+        height: `${this.sizeValue}${this.sizeUnit}`,
         borderRadius: this.borderRadius || (this.rounded ? '50%' : 0)
       }
 
@@ -88,7 +99,7 @@ export default {
       const initialBackgroundAndFontStyle = {
         backgroundColor: this.background,
         fontFamily: 'Helvetica, Arial, sans-serif',
-        fontSize: `${this.size / this.userInitial.length}px`,
+        fontSize: `${this.sizeValue / this.userInitial.length}${this.sizeUnit}`,
         fontWeight: 'bold',
         color: this.fontColor,
         display: 'flex',
