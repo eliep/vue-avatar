@@ -89,10 +89,10 @@ export default {
 
       const initialBackgroundAndFontStyle = {
         backgroundColor: this.background,
-        font: Math.floor(this.size / 2.5) + 'px/100px Helvetica, Arial, sans-serif',
+        fontFamily: 'Helvetica, Arial, sans-serif',
+        fontSize: (this.size / this.userInitial.length) + 'px',
         fontWeight: 'bold',
         color: this.fontColor,
-        // lineHeight: (this.size + Math.floor(this.size / 20)) + 'px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
