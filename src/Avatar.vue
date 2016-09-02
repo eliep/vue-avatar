@@ -1,5 +1,5 @@
 <template>
-  <div id="avatar" v-bind:style="style">
+  <div class="avatar" v-bind:style="style">
     <span v-if="!this.src">{{ userInitial }}</span>
   </div>
 </template>
