@@ -99,7 +99,6 @@ export default {
       const initialBackgroundAndFontStyle = {
         backgroundColor: this.background,
         fontFamily: 'Helvetica, Arial, sans-serif',
-        fontSize: `${this.sizeValue / this.userInitial.length}${this.sizeUnit}`,
         fontWeight: 'bold',
         color: this.fontColor,
         display: 'flex',
@@ -113,16 +112,36 @@ export default {
 
       Object.assign(style, backgroundAndFontStyle)
 
+      this.$nextTick(function () {
+        this.setFontSize()
+      })
+
       return style
     },
 
     userInitial () {
       const initials = this.initials || this.initial(this.username)
+
+      this.$nextTick(function () {
+        this.setFontSize()
+      })
+
       return initials
     }
   },
 
   methods: {
+    setFontSize () {
+      if (!this.isImage) {
+        const clientWidth = this.$els.avatar.clientWidth
+        if (this.sizeUnit === 'em') {
+          this.$els.avatar.style.width = `${clientWidth}px`
+          this.$els.avatar.style.height = `${clientWidth}px`
+        }
+        this.$els.avatar.style.fontSize = `${clientWidth / this.userInitial.length}px`
+      }
+    },
+
     initial (username) {
       let parts = username.split(/[ -]/)
       let initials = ''
