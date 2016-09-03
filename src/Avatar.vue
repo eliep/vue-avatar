@@ -1,6 +1,6 @@
 <template>
   <div v-el:avatar class="avatar" v-bind:style="style">
-    <span v-if="!this.src">{{ userInitial }}</span>
+    <span v-if="!this.src" style="white-space: nowrap;">{{ userInitial }}</span>
   </div>
 </template>
 
@@ -94,7 +94,8 @@ export default {
         color: this.fontColor,
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        overflow: 'hidden'
       }
 
       const backgroundAndFontStyle = (this.isImage)
