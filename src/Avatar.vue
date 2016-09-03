@@ -1,7 +1,7 @@
 <template>
-  <div><div id="avatar" v-bind:style="style">
-    <span v-if="!this.src">{{ userInitial }}</span>
-  </div></div>
+  <div v-el:avatar class="avatar" v-bind:style="style">
+    <span v-if="!this.src" style="white-space: nowrap;">{{ userInitial }}</span>
+  </div>
 </template>
 
 <script type="text/babel">
@@ -22,7 +22,7 @@ export default {
       type: String
     },
     size: {
-      type: Number,
+      type: [String, Number],
       default: 50
     },
     src: {
@@ -31,6 +31,12 @@ export default {
     rounded: {
       type: Boolean,
       default: true
+    },
+    borderRadius: {
+      type: String
+    },
+    margin: {
+      type: String
     },
     lighten: {
       type: Number,
@@ -63,30 +69,33 @@ export default {
     },
 
     isImage () {
-      return this.src !== undefined
+      return this.src !== undefined && this.src !== ''
     },
 
     style () {
+      this.$els.avatar.style.fontSize = 'inherit'
+
       const style = {
-        width: this.size + 'px',
-        height: this.size + 'px',
-        borderRadius: (this.rounded) ? '50%' : 0,
-        textAlign: 'center',
-        verticalAlign: 'middle'
+        flex: 'none',
+        margin: this.margin || 0,
+        width: isNaN(this.size) ? this.size : `${this.size}px`,
+        height: isNaN(this.size) ? this.size : `${this.size}px`,
+        borderRadius: this.borderRadius || (this.rounded ? '50%' : 0)
       }
 
       const imgBackgroundAndFontStyle = {
-        background: 'url(' + this.src + ') no-repeat',
-        backgroundSize: this.size + 'px ' + this.size + 'px',
-        backgroundOrigin: 'content-box'
+        background: `url(${this.src}) 0% 0% / 100% 100% no-repeat content-box`
       }
 
       const initialBackgroundAndFontStyle = {
         backgroundColor: this.background,
-        font: Math.floor(this.size / 2.5) + 'px/100px Helvetica, Arial, sans-serif',
+        fontFamily: 'Helvetica, Arial, sans-serif',
         fontWeight: 'bold',
         color: this.fontColor,
-        lineHeight: (this.size + Math.floor(this.size / 20)) + 'px'
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        overflow: 'hidden'
       }
 
       const backgroundAndFontStyle = (this.isImage)
@@ -95,16 +104,32 @@ export default {
 
       Object.assign(style, backgroundAndFontStyle)
 
+      this.$nextTick(function () {
+        this.adjust()
+      })
+
       return style
     },
 
     userInitial () {
       const initials = this.initials || this.initial(this.username)
+
+      this.$nextTick(function () {
+        this.adjust()
+      })
+
       return initials
     }
   },
 
   methods: {
+    adjust () {
+      const clientWidth = this.$els.avatar.clientWidth
+      this.$els.avatar.style.width = `${clientWidth}px`
+      this.$els.avatar.style.height = `${clientWidth}px`
+      this.$els.avatar.style.fontSize = `${clientWidth / this.userInitial.length}px`
+    },
+
     initial (username) {
       let parts = username.split(/[ -]/)
       let initials = ''
