@@ -59,17 +59,6 @@ export default {
   },
 
   computed: {
-    sizeValue () {
-      return parseFloat(this.size)
-    },
-
-    sizeUnit () {
-      if (typeof this.size === 'number') {
-        return 'px'
-      }
-      return this.size.replace(/[.0-9]/g, '') || 'px'
-    },
-
     background () {
       return this.backgroundColor ||
               this.randomBackgroundColor(this.username.length, this.backgroundColors)
@@ -84,11 +73,13 @@ export default {
     },
 
     style () {
+      this.$els.avatar.style.fontSize = 'inherit'
+
       const style = {
         flex: 'none',
         margin: this.margin || 0,
-        width: `${this.sizeValue}${this.sizeUnit}`,
-        height: `${this.sizeValue}${this.sizeUnit}`,
+        width: isNaN(this.size) ? this.size : `${this.size}px`,
+        height: isNaN(this.size) ? this.size : `${this.size}px`,
         borderRadius: this.borderRadius || (this.rounded ? '50%' : 0)
       }
 
@@ -113,7 +104,7 @@ export default {
       Object.assign(style, backgroundAndFontStyle)
 
       this.$nextTick(function () {
-        this.setFontSize()
+        this.adjust()
       })
 
       return style
@@ -123,7 +114,7 @@ export default {
       const initials = this.initials || this.initial(this.username)
 
       this.$nextTick(function () {
-        this.setFontSize()
+        this.adjust()
       })
 
       return initials
@@ -131,15 +122,11 @@ export default {
   },
 
   methods: {
-    setFontSize () {
-      if (!this.isImage) {
-        const clientWidth = this.$els.avatar.clientWidth
-        if (this.sizeUnit === 'em') {
-          this.$els.avatar.style.width = `${clientWidth}px`
-          this.$els.avatar.style.height = `${clientWidth}px`
-        }
-        this.$els.avatar.style.fontSize = `${clientWidth / this.userInitial.length}px`
-      }
+    adjust () {
+      const clientWidth = this.$els.avatar.clientWidth
+      this.$els.avatar.style.width = `${clientWidth}px`
+      this.$els.avatar.style.height = `${clientWidth}px`
+      this.$els.avatar.style.fontSize = `${clientWidth / this.userInitial.length}px`
     },
 
     initial (username) {
