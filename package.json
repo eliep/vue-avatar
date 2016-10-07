@@ -1,6 +1,6 @@
 {
   "name": "vue-avatar",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "Avatar component for vue.js",
   "author": "eprudhomme@gmail.com",
   "repository": {
@@ -20,7 +20,7 @@
   },
   "main": "dist/vue-avatar.min.js",
   "dependencies": {
-    "vue": "^1.0.18",
+    "vue": "^2.0.0",
     "babel-runtime": "^5.8.0"
   },
   "devDependencies": {

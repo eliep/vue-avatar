@@ -305,19 +305,19 @@ new Vue({
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/components/prism-javascript.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.js'></script>
     <script src='./vue-avatar.min.js'></script>
     <script type='text/javascript'>
       new Vue({
-        el: 'body',
+        el: '.container',
         components: {
           'avatar': Avatar.Avatar,
           'rules': {
             props: ['items'],
-            template: 'For example:' +
+            template: '<div>For example:' +
               '<ul id="example-1">' +
                 '<li v-for="item in items"><b>{{ item.username }}</b> becomes <b>{{ item.initials }}</b></li>' +
-              '</ul>'
+              '</ul></div>'
           }
         },
 
