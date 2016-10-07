@@ -19,6 +19,14 @@ You can find a few examples and the documentation [here](https://eliep.github.io
 
 `npm install vue-avatar`
 
+## Version
+
+| Vuejs version | vue-avatar version |
+| ------------- | -----------------  |
+| ^1.0.18       | 1.3.0              |
+| ^2.0.0        | 2.0.0              |
+
+
 ## Usage
 vue-avatar is a UMD module, which can be used as a module in both CommonJS and AMD modular environments.
 When in non-modular environment, Avatar will be registered as a global variable.</p>
