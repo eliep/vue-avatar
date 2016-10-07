@@ -23,8 +23,8 @@ You can find a few examples and the documentation [here](https://eliep.github.io
 
 | Vuejs version | vue-avatar version |
 | ------------- | -----------------  |
-| ^1.0.18       | 1.3.0              |
-| ^2.0.0        | 2.0.0              |
+| ^1.0.18       | ^1.3.0             |
+| ^2.0.0        | ^2.0.0             |
 
 
 ## Usage

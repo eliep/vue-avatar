@@ -28,6 +28,19 @@
         background-color: #eee
       }
 
+      table tr:nth-child(2n) {
+        background-color: #f1f1f1;
+      }
+
+      table th {
+        border-top: 1px solid #ccc;
+      }
+
+      table td, table th {
+        padding: 8px 8px;
+        border-bottom: 1px solid #ccc;
+      }
+
       .default-avatar {
         display: inline-block;
         margin: 3px;
@@ -76,6 +89,14 @@
         <h2>Installation</h2>
 
         <pre><code class="language-html">npm install vue-avatar</code></pre>
+
+
+        <h2>Versions</h2>
+        <table width="50%">
+          <tr><th>Vue.js</th><th>vue-avatar</th></tr>
+          <tr><td>^1.0.18</td><td>^1.3.0</td></tr>
+          <tr><td>^2.0.0</td><td>^2.0.0</td></tr>
+        </table>
 
         <h2>Usage</h2>
         <p>vue-avatar is a UMD module, which can be used as a module in both CommonJS and AMD modular environments.
