@@ -146,7 +146,7 @@ new Vue({
 # install dependencies
 npm install
 
-# serve gh pages with hot reload at localhost:8080/gh-pages
+# serve gh pages with hot reload at localhost:8080/gh-pages/index.html
 npm start
 
 # build

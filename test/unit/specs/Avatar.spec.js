@@ -36,7 +36,7 @@ describe('Avatar.vue', () => {
 
     const initial = vm.$children[0].initial(username)
     expect(initial).to.equal('HF')
-    expect(vm.$el.querySelector('#avatar > span').textContent).to.contain(initial)
+    expect(vm.$el.querySelector('.avatar > span').textContent).to.contain(initial)
   })
 
   it('should render an image with the correct \'src\' when given', () => {
@@ -50,8 +50,8 @@ describe('Avatar.vue', () => {
     const initial = vm.$children[0].initial(username)
     expect(initial).to.equal('HF')
 
-    expect(vm.$el.querySelector('#avatar > span')).to.be.null
-    let av = vm.$el.querySelector('#avatar')
+    expect(vm.$el.querySelector('.avatar > span')).to.be.null
+    let av = vm.$el.querySelector('.avatar')
     let background = av.style.background // window.getComputedStyle(av,null).width
     expect(background).to.contain('path/to/img')
   })
