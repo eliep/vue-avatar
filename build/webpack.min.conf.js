@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const base = require('./webpack.base.conf')
 
@@ -16,7 +17,7 @@ config.plugins = (config.plugins || []).concat([
   }),
   new webpack.optimize.OccurenceOrderPlugin(),
   new CopyWebpackPlugin([
-    { from: './src/Avatar.vue' }
+    { from: path.resolve(__dirname, '../src') + './Avatar.vue' }
   ])
 ])
 
