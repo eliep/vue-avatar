@@ -50,7 +50,7 @@ After that, you can use it in your templates:
 <avatar username="Jane Doe"></avatar>
 ```
 
-### ES5
+### CommonJS
 ```js
 var Vue = require('vue')
 var Avatar = require('vue-avatar')
