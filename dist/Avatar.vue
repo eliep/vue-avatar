@@ -100,6 +100,7 @@ export default {
 
     userInitial () {
       const initials = this.initials || this.initial(this.username)
+      this.$emit('avatar-initials', this.username, initials)
       return initials
     }
   },
