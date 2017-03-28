@@ -32,6 +32,10 @@ export default {
       type: Boolean,
       default: true
     },
+    borderRadius: {
+      type: Number,
+      default: 0
+    },
     lighten: {
       type: Number,
       default: 80
@@ -46,10 +50,6 @@ export default {
         '#4CAF50', '#8BC34A', '#CDDC39', /* '#FFEB3B' ,*/ '#FFC107',
         '#FF9800', '#FF5722', '#795548', '#9E9E9E', '#607D8B']
     }
-  },
-
-  mounted () {
-    this.$emit('avatar-initials', this.username, this.userInitial)
   },
 
   computed: {
@@ -70,7 +70,7 @@ export default {
       const style = {
         width: this.size + 'px',
         height: this.size + 'px',
-        borderRadius: (this.rounded) ? '50%' : 0,
+        borderRadius: (this.rounded) ? '50%' : (this.borderRadius + 'px'),
         textAlign: 'center',
         verticalAlign: 'middle'
       }
@@ -100,6 +100,7 @@ export default {
 
     userInitial () {
       const initials = this.initials || this.initial(this.username)
+      this.$emit('avatar-initials', initials)
       return initials
     }
   },

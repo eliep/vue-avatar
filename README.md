@@ -131,6 +131,11 @@ new Vue({
     <td> true </td>
     <td> Boolean </td>
     <td>True if the avatar must be rounded.</td></tr>
+    <tr><td>:borderRadius</td>
+    <td> N </td>
+    <td> 0 </td>
+    <td> Number </td>
+    <td>If `:rounded` is set to `false` this property indicates `border-radius` style in pixels.</td></tr>
 </tbody>
 </table>
 
@@ -141,10 +146,8 @@ new Vue({
 </tr></thead>
 <tbody>
   <tr><td>@avatar-initials</td>
-    <td>username (the value of the username props),
-      initials (the value of the computed initials or the initials props if any)</td>
-    <td>This event is trigger when the component is ready with component
-      username and initial.</td></tr>
+    <td>the value of the computed initials</td>
+    <td>This event is trigger when initials are computed.</td></tr>
 </tbody>
 </table>
 

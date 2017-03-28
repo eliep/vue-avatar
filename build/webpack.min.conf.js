@@ -17,7 +17,7 @@ config.plugins = (config.plugins || []).concat([
   }),
   new webpack.optimize.OccurenceOrderPlugin(),
   new CopyWebpackPlugin([
-    { from: path.resolve(__dirname, '../src') + './Avatar.vue' }
+    { from: 'src/' + 'Avatar.vue', to: './' }
   ])
 ])
 
