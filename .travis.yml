@@ -2,7 +2,3 @@ sudo: false
 language: node_js
 node_js:
   - '6'
-script:
-  - npm install -no-optional
-after_script:
-  - npm run test
