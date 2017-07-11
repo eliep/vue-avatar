@@ -63,7 +63,7 @@ export default {
     },
 
     isImage () {
-      return this.src !== undefined
+      return Boolean(this.src)
     },
 
     style () {
