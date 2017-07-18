@@ -1,73 +1,62 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
 
-var projectRoot = path.resolve(__dirname, '../')
+const projectRoot = path.resolve(__dirname, '..')
 
 module.exports = {
   entry: './src/',
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(projectRoot, 'dist'),
     publicPath: '/gh-pages',
     filename: 'vue-avatar.min.js',
     library: 'Avatar',
     libraryTarget: 'umd'
   },
   resolve: {
-    extensions: ['', '.js', '.vue'],
-    fallback: [path.join(__dirname, 'node_modules')],
+    extensions: ['.js', '.vue'],
     alias: {
-      'src': path.resolve(__dirname, '../src'),
-      vue: 'vue/dist/vue.js'
+      src: path.resolve(projectRoot, 'src'),
+      vue$: 'vue/dist/vue.esm.js'
     }
   },
-  resolveLoader: {
-    root: path.join(__dirname, 'node_modules'),
-  },
   module: {
-    preLoaders: [
-      {
-        test: /\.vue$/,
-        loader: 'eslint',
-        include: projectRoot,
-        exclude: /node_modules/
-      },
-      {
-        test: /\.js$/,
-        loader: 'eslint',
-        include: projectRoot,
-        exclude: /node_modules/
-      }
-    ],
-    loaders: [
-      {
-        test: /\.vue$/,
-        loader: 'vue'
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.json$/,
-        loader: 'json'
-      },
-      {
-        test: /\.html$/,
-        loader: 'vue-html'
-      },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'url',
-        query: {
-          limit: 10000,
-          name: '[name].[ext]?[hash]'
-        }
-      }
-    ]
-  },
-  eslint: {
-    formatter: require('eslint-friendly-formatter')
+	rules: [
+		{
+		  enforce: 'pre',
+		  test: /\.(js|vue)$/,
+		  loader: 'eslint-loader',
+		  include: projectRoot,
+		  exclude: /node_modules/,
+		  options: {
+			  formatter: require('eslint-friendly-formatter')
+		  }
+	    },
+		{
+		  test: /\.vue$/,
+		  loader: 'vue-loader'
+		},
+		{
+		  test: /\.js$/,
+		  loader: 'babel-loader',
+		  exclude: /node_modules/
+		},
+		{
+		  test: /\.json$/,
+		  loader: 'json-loader'
+		},
+		{
+		  test: /\.html$/,
+		  loader: 'vue-html-loader'
+		},
+		{
+		  test: /\.(png|jpg|gif|svg)$/,
+		  loader: 'url',
+		  query: {
+			limit: 10000,
+			name: '[name].[ext]?[hash]'
+		  }
+		}
+	]
   },
   devServer: {
     historyApiFallback: true,
