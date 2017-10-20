@@ -34,7 +34,7 @@ When in non-modular environment, Avatar will be registered as a global variable.
 ### ES6
 ```js
 
-import Avatar from 'vue-avatar/dist/Avatar'
+import Avatar from 'vue-avatar'
 
 export default {
   ...
