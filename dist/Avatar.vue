@@ -1,5 +1,5 @@
 <template>
-  <div><div class="avatar" v-bind:style="style">
+  <div><div class="avatar" :style="style">
     <span v-if="!this.src">{{ userInitial }}</span>
   </div></div>
 </template>
@@ -54,8 +54,7 @@ export default {
 
   computed: {
     background () {
-      return this.backgroundColor ||
-              this.randomBackgroundColor(this.username.length, this.backgroundColors)
+      return this.backgroundColor || this.randomBackgroundColor(this.username.length, this.backgroundColors)
     },
 
     fontColor () {
@@ -68,16 +67,16 @@ export default {
 
     style () {
       const style = {
-        width: this.size + 'px',
-        height: this.size + 'px',
-        borderRadius: (this.rounded) ? '50%' : 0,
+        width: `${this.size}px`,
+        height: `${this.size}px`,
+        borderRadius: this.rounded ? '50%' : 0,
         textAlign: 'center',
         verticalAlign: 'middle'
       }
 
       const imgBackgroundAndFontStyle = {
-        background: 'url(' + this.src + ') no-repeat',
-        backgroundSize: this.size + 'px ' + this.size + 'px',
+        background: `url(${this.src}) no-repeat`,
+        backgroundSize: `${this.size}px ${this.size}px`,
         backgroundOrigin: 'content-box'
       }
 
