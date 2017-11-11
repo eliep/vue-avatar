@@ -75,8 +75,8 @@ export default {
       }
 
       const imgBackgroundAndFontStyle = {
-        background: `url(${this.src}) no-repeat`,
-        backgroundSize: `${this.size}px ${this.size}px`,
+        background: "url(\'" + this.src + "\') no-repeat",
+        backgroundSize: this.size + 'px ' + this.size + 'px'.
         backgroundOrigin: 'content-box'
       }
 
