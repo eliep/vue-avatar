@@ -1,5 +1,5 @@
-import Avatar from './Avatar'
+import Avatar from './Avatar.vue'
 
-module.exports = {
-  Avatar: Avatar
-}
+export { Avatar }
+
+export default Avatar

@@ -1,5 +1,5 @@
 <template>
-  <div><div class="avatar" v-bind:style="style">
+  <div><div class="avatar" :style="style">
     <span v-if="!this.src">{{ userInitial }}</span>
   </div></div>
 </template>
@@ -43,7 +43,7 @@ export default {
       backgroundColors: [
         '#F44336', '#FF4081', '#9C27B0', '#673AB7',
         '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688',
-        '#4CAF50', '#8BC34A', '#CDDC39', /* '#FFEB3B' ,*/ '#FFC107',
+        '#4CAF50', '#8BC34A', '#CDDC39', /* '#FFEB3B' , */ '#FFC107',
         '#FF9800', '#FF5722', '#795548', '#9E9E9E', '#607D8B']
     }
   },
@@ -54,8 +54,7 @@ export default {
 
   computed: {
     background () {
-      return this.backgroundColor ||
-              this.randomBackgroundColor(this.username.length, this.backgroundColors)
+      return this.backgroundColor || this.randomBackgroundColor(this.username.length, this.backgroundColors)
     },
 
     fontColor () {
@@ -63,21 +62,21 @@ export default {
     },
 
     isImage () {
-      return this.src !== undefined
+      return Boolean(this.src)
     },
 
     style () {
       const style = {
-        width: this.size + 'px',
-        height: this.size + 'px',
-        borderRadius: (this.rounded) ? '50%' : 0,
+        width: `${this.size}px`,
+        height: `${this.size}px`,
+        borderRadius: this.rounded ? '50%' : 0,
         textAlign: 'center',
         verticalAlign: 'middle'
       }
 
       const imgBackgroundAndFontStyle = {
         background: "url(\'" + this.src + "\') no-repeat",
-        backgroundSize: this.size + 'px ' + this.size + 'px',
+        backgroundSize: this.size + 'px ' + this.size + 'px'.
         backgroundOrigin: 'content-box'
       }
 
