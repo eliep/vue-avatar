@@ -43,7 +43,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "file-loader": "^1.1.5",
     "function-bind": "^1.1.1",
-    "isparta-loader": "^2.0.0",
+    "istanbul-instrumenter-loader": "^3.0.0",
     "json-loader": "^0.5.7",
     "karma": "^1.7.1",
     "karma-coverage": "^1.1.1",

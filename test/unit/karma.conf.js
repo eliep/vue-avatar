@@ -6,38 +6,36 @@
 var path = require('path')
 var merge = require('webpack-merge')
 var baseConfig = require('../../build/webpack.base.conf.js')
-//var utils = require('../../build/utils')
-var projectRoot = path.resolve(__dirname, '../../')
+// var utils = require('../../build/utils')
 
 var webpackConfig = merge(baseConfig, {
   // use inline sourcemap for karma-sourcemap-loader
-  /*module: {
+  /* module: {
     loaders: utils.styleLoaders()
-  },*/
-  devtool: '#inline-source-map',
-  vue: {
-    loaders: {
-      js: 'isparta'
-    }
-  }
+  }, */
+  devtool: '#inline-source-map'
 })
 
 // no need for app entry during tests
 delete webpackConfig.entry
 
-// make sure isparta loader is applied before eslint
-webpackConfig.module.preLoaders = webpackConfig.module.preLoaders || []
-webpackConfig.module.preLoaders.unshift({
-  test: /\.js$/,
-  loader: 'isparta',
-  include: projectRoot,
-  exclude: /test\/unit|node_modules/
+// make sure istanbul-instrumenter loader is applied before eslint
+/* webpackConfig.module.rules.some(function (rule, i) {
+  if (rule.enforce === 'pre') {
+    rule.use.push({
+      loader: 'istanbul-instrumenter-loader'
+    })
+    return true
+  }
 })
+*/
 
-// only apply babel for test files when using isparta
-webpackConfig.module.loaders.some(function (loader, i) {
-  if (loader.loader === 'babel') {
-    loader.include = /test\/unit/
+// only apply babel for test files when using istanbul-instrumenter
+webpackConfig.module.rules.some(function (rule, i) {
+  if (rule.loader === 'babel-loader') {
+    rule.include = [
+      path.resolve('../unit/')
+    ]
     return true
   }
 })
