@@ -1,65 +1,71 @@
-const path = require('path')
+var path = require('path')
+var config = require('../config')
+var utils = require('./utils')
+var vueLoaderConfig = require('./vue-loader.conf')
 
-const projectRoot = path.resolve(__dirname, '..')
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
 
 module.exports = {
-  entry: './src/',
+  entry: {
+    app: './documentation/main.js'
+  },
   output: {
-    path: path.resolve(projectRoot, 'dist'),
-    filename: 'vue-avatar.min.js',
-    library: 'Avatar',
-    libraryTarget: 'umd',
-    umdNamedDefine: true
+    path: config.docs.assetsRoot,
+    filename: '[name].js',
+    publicPath: process.env.NODE_ENV === 'production'
+      ? config.docs.assetsPublicPath
+      : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue'],
+    extensions: ['.js', '.vue', '.json'],
+    modules: [
+      resolve('src'),
+      resolve('node_modules')
+    ],
     alias: {
-      src: path.resolve(projectRoot, 'src'),
-      vue$: 'vue/dist/vue'
+      'vue$': 'vue/dist/vue',
+      'vue-avatar': path.resolve(__dirname, '../src/Avatar')
     }
   },
   module: {
     rules: [
       {
-        enforce: 'pre',
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
-        include: projectRoot,
-        exclude: /node_modules/,
+        enforce: 'pre',
+        include: [resolve('src'), resolve('test')],
         options: {
           formatter: require('eslint-friendly-formatter')
         }
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: vueLoaderConfig
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        include: [resolve('src'), resolve('documentation'), resolve('test')]
       },
       {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
-      {
-        test: /\.html$/,
-        loader: 'vue-html-loader'
-      },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'url',
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
         query: {
           limit: 10000,
-          name: '[name].[ext]?[hash]'
+          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
     ]
-  },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: false
-  },
-  devtool: '#eval-source-map'
+  }
 }
