@@ -26,7 +26,7 @@ module.exports = {
     ],
     alias: {
       'vue$': 'vue/dist/vue',
-      'vue-avatar': path.resolve(__dirname, '../src/Avatar')
+      'vue-avatar': path.resolve(__dirname, '../src/Avatar.vue')
     }
   },
   module: {
