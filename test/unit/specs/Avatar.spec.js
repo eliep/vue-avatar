@@ -36,7 +36,7 @@ describe('Avatar.vue', function () {
 
     var initial = vm.$children[0].initial(username)
     expect(initial).to.equal('HF')
-    expect(vm.$el.querySelector('.avatar > span').textContent).to.contain(initial)
+    expect(vm.$el.querySelector('.vue-avatar--wrapper > span').textContent).to.contain(initial)
   })
 
   it('should render an image with the correct \'src\' when given', function () {
@@ -51,8 +51,8 @@ describe('Avatar.vue', function () {
     expect(initial).to.equal('HF')
 
     /* eslint-disable no-unused-expressions */
-    expect(vm.$el.querySelector('.avatar > span')).to.be.null
-    var av = vm.$el.querySelector('.avatar')
+    expect(vm.$el.querySelector('.vue-avatar--wrapper > span')).to.be.null
+    var av = vm.$el.querySelector('.vue-avatar--wrapper')
     var background = av.style.background // window.getComputedStyle(av,null).width
     expect(background).to.contain('path/to/img')
   })

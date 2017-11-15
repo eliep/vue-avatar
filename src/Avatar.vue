@@ -1,7 +1,7 @@
 <template>
-  <div><div class="avatar" :style="style">
+  <div class="vue-avatar--wrapper" :class="customClass" :style="style">
     <span v-if="!this.src">{{ userInitial }}</span>
-  </div></div>
+  </div>
 </template>
 
 <script>
@@ -19,6 +19,9 @@ export default {
       type: String
     },
     color: {
+      type: String
+    },
+    customClass: {
       type: String
     },
     size: {
