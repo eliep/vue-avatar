@@ -22,11 +22,14 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     modules: [
       resolve('src'),
+      resolve('documentation'),
       resolve('node_modules')
     ],
     alias: {
       'vue$': 'vue/dist/vue',
-      'vue-avatar': path.resolve(__dirname, '../src/Avatar.vue')
+      'vue-avatar': path.resolve(__dirname, '../src/Avatar'),
+      'vue-multiselect': path.resolve(__dirname, '../src/Multiselect'),
+      'src': path.resolve(__dirname, '../src')
     }
   },
   module: {
