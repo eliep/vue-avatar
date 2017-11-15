@@ -155,10 +155,10 @@ new Vue({
 npm install
 
 # serve gh pages with hot reload at localhost:8080/gh-pages/index.html
-npm start
+npm run dev
 
 # build
-npm run build
+npm run bundle
 ```
 ## Test
 ``` bash

@@ -1,0 +1,272 @@
+a(href='https://github.com/eliep/vue-avatar')
+  img(style='position: absolute; top: 0; right: 0; border: 0;', src='https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67', alt='Fork me on GitHub', data-canonical-src='https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png')
+
+.container
+  .row
+    .jumbotron
+      h1
+        avatar#avatar(username='vue-avatar', :size='70', style='display:inline-block', @avatar-initials='initials')
+        |             vue-avatar
+      p.lead An avatar component for vue.js
+
+    h2 Description
+    p
+      | This component display an avatar image and if none is provided fallback to the
+      | user initials.  This component is highly inspired from
+      a(href='https://github.com/wbinnssmith/react-user-avatar') react-user-avatar
+    p
+      | Rules used to compute user initials:
+      ul
+        li divide the username on space and hyphen
+        li use the first letter of each parts
+        li never use more than three letters as initials
+        li
+          | if the username is divided in more than three parts and has part
+          | starting with an uppercase, skip parts starting with a lowercase.
+      rules(:items='items')
+
+    h2 Installation
+    pre
+      code.language-html npm install vue-avatar
+ 
+    h2 Versions
+    table(width='50%')
+      tbody
+        tr
+          th Vue.js
+          th vue-avatar
+        tr
+          td ^1.0.18
+          td ^1.3.0
+        tr
+          td ^2.0.0
+          td ^2..0
+
+    h2 Usage
+    p
+      | vue-avatar is a UMD module, which can be used as a module in both CommonJS and AMD modular environments.
+      | When in non-modular environment, Avatar will be registered as a global variable.
+
+    h3 ES6
+    pre
+      code.language-javascript.
+        import Avatar from 'vue-avatar'
+
+        export default {
+
+          components: {
+            Avatar
+          },
+
+        }
+
+    p After that, you can use it in your templates:
+    pre
+      code.language-html.
+        &lt;avatar username="Jane Doe"&gt;&lt;/avatar&gt;
+
+    p which will render to:
+    avatar(username='Jane Doe')
+
+    h3 CommonJS
+    pre
+      code.language-javascript.
+        var Vue = require('vue')
+        var Avatar = require('vue-avatar')
+
+        var YourComponent = Vue.extend({
+          components: {
+            'avatar': Avatar
+          }
+        })
+
+    h3 Browser
+    pre
+      code.language-html.
+        &lt;script src="path/to/vue/vue.min.js"&gt;&lt;/script&gt;
+        &lt;script src="path/to/vue-avatar/dist/vue-avatar.min.js"&gt;&lt;/script&gt;
+
+        new Vue({
+          components: {
+            'avatar': Avatar
+          }
+        })
+
+    h2 Props
+    table.table
+      thead
+        tr
+          th Name
+          th Required
+          th Default
+          th Type
+          th Description
+      tbody
+        tr
+          td username
+          td  Y 
+          td  - 
+          td  String 
+          td The user name that will be used to compute user initial.
+        tr
+          td initials
+          td  N 
+          td  - 
+          td  String 
+          td Force the displayed initials by overriding the computed ones.
+        tr
+          td src
+          td  N 
+          td  - 
+          td  String 
+          td Path to the avatar image to display.
+        tr
+          td backgroundColor
+          td  N 
+          td  - 
+          td  String 
+          td
+            | The avatar background color to use if no image is provided. If none
+            | is specified, a background color will be picked depending on
+            | the user name length.
+        tr
+          td color
+          td  N 
+          td  - 
+          td  String 
+          td
+            | The font color used to render the user initials. If none
+            | is provided, the background color is used to compute
+            | the font color.
+        tr
+          td :lighten
+          td  N 
+          td  80 
+          td  Number 
+          td
+            | A factor by which the background color must be lightened to
+            | produce the font color. Number between [-100,100].
+        tr
+          td :size
+          td  N 
+          td  50 
+          td  Number 
+          td The avatar size in pixel.
+        tr
+          td :rounded
+          td  N 
+          td  true 
+          td  Boolean 
+          td True for a rounded avatar.
+
+    h2 Event
+    table.table
+      thead
+        tr
+          th Name
+          th Arguments
+          th Description
+      tbody
+        tr
+          td @avatar-initials
+          td
+            | username (the value of the username props),
+            | initials (the value of the computed initials or the initials props if any)
+          td
+            | This event is trigger when the component is ready with component
+            | username and initial.
+
+    h2 Examples
+    table.table
+      thead
+        tr
+          th
+          th Code
+      tbody
+        tr
+          td
+            avatar(username='Hubert-Félix Thiéfaine')
+          td
+            pre
+              code.language-html.
+                &lt;avatar username="Hubert-Félix Thiéfaine"&gt;&lt;/avatar&gt;
+        tr
+          td
+            avatar(username='Hubert-Félix Thiéfaine', background-color='#FFC107', :size='100', :rounded='false', :lighten='20')
+          td
+            pre
+              code.language-html.
+                &lt;avatar username="Hubert-Félix Thiéfaine"
+                  background-color="#FFC107"
+                  :size="100"
+                  :rounded="false"
+                  :lighten="20"&gt;
+                &lt;/avatar&gt;
+        tr
+          td
+            avatar(username='Hubert-Félix Thiéfaine', background-color='#FFC107', :size='100', :rounded='false', color='#fff', @avatar-initials='initials')
+          td
+            pre
+              code.language-html.
+                &lt;avatar username="Hubert-Félix Thiéfaine"
+                  background-color="#FFC107"
+                  :size="100"
+                  :rounded="false"
+                  color="#fff"&gt;
+                &lt;/avatar&gt;
+        tr
+          td
+            avatar(username='Darth Vader', background-color='#000', :size='100', :rounded='false', @avatar-initials='initials')
+          td
+            pre
+              code.language-html.
+                &lt;avatar username="Darth Vader"
+                  background-color="#000"
+                  :size="100"
+                  :rounded="false"&gt;
+                &lt;/avatar&gt;
+        tr
+          td
+            avatar(username='Darth Vader', src='./static/darth-vader.png', :size='100')
+          td
+            pre
+              code.language-html.
+                &lt;avatar username="Darth Vader"
+                  src="./static/darth-vader.png"
+                  :size="100"&gt;
+                &lt;/avatar&gt;
+        tr
+          td
+            avatar(username='Darth Vader', initials='AS', :size='100')
+          td
+            pre
+              code.language-html.
+                &lt;avatar username="Darth Vader"
+                  initials="AS"
+                  :size="100"&gt;
+                &lt;/avatar&gt;
+
+    h2 Default color
+    p
+      | 18 default background colors are available and can be seen below. The
+      | background color chosen depends on the username length.
+      | This way a username will always have the same background color.
+    avatar.default-avatar(:size='70', username='A')
+    avatar.default-avatar(:size='70', username='BB')
+    avatar.default-avatar(:size='70', username='CCC')
+    avatar.default-avatar(:size='70', username='DDDD')
+    avatar.default-avatar(:size='70', username='EEEEE')
+    avatar.default-avatar(:size='70', username='FFFFFF')
+    avatar.default-avatar(:size='70', username='GGGGGGG')
+    avatar.default-avatar(:size='70', username='HHHHHHHH')
+    avatar.default-avatar(:size='70', username='IIIIIIIII')
+    br
+    avatar.default-avatar(:size='70', username='JJJJJJJJJJ')
+    avatar.default-avatar(:size='70', username='KKKKKKKKKKK')
+    avatar.default-avatar(:size='70', username='LLLLLLLLLLLL')
+    avatar.default-avatar(:size='70', username='MMMMMMMMMMMMM')
+    avatar.default-avatar(:size='70', username='NNNNNNNNNNNNNN')
+    avatar.default-avatar(:size='70', username='OOOOOOOOOOOOOOO')
+    avatar.default-avatar(:size='70', username='PPPPPPPPPPPPPPPP')
+    avatar.default-avatar(:size='70', username='QQQQQQQQQQQQQQQQQ')
+    avatar.default-avatar(:size='70', username='RRRRRRRRRRRRRRRRRR')

@@ -51,7 +51,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       filename: process.env.NODE_ENV === 'testing'
         ? 'index.html'
         : config.docs.index,
-      template: 'documentation/index.html',
+      template: 'documentation/index.pug',
       inject: true,
       minify: {
         removeComments: true,
@@ -82,17 +82,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
-    }),
-    new CopyWebpackPlugin([
-      {
-        from: path.join(__dirname, '../static'),
-        to: path.join(__dirname, '../docs/static')
-      },
-      {
-        from: path.join(__dirname, '../v1'),
-        to: path.join(__dirname, '../docs/v1')
-      }
-    ])
+    })
   ]
 })
 
@@ -110,7 +100,13 @@ if (config.docs.productionGzip) {
       ),
       threshold: 10240,
       minRatio: 0.8
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: path.join(__dirname, '../static'),
+        to: path.join(__dirname, '../docs/static')
+      }
+    ])
   )
 }
 

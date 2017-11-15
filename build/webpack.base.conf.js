@@ -19,7 +19,7 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.pug', '.js', '.vue', '.json'],
     modules: [
       resolve('src'),
       resolve('documentation'),
@@ -52,6 +52,11 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('documentation'), resolve('test')]
+      },
+      {
+        test: /\.pug$/,
+        use: 'pug-loader',
+        include: [resolve('src'), resolve('documentation')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
