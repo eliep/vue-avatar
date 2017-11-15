@@ -101,6 +101,11 @@ new Vue({
     <td> - </td>
     <td> String </td>
     <td>Path to the avatar image to display.</td></tr>
+  <tr><td>:customStyle</td>
+    <td> N </td>
+    <td> - </td>
+    <td> Object </td>
+    <td>A custom style object to override the base styles.</td></tr>
   <tr><td>backgroundColor</td>
     <td> N </td>
     <td> - </td>
