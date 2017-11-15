@@ -4,9 +4,9 @@
   </div></div>
 </template>
 
-<script type="text/babel">
+<script>
 export default {
-
+  name: 'avatar',
   props: {
     username: {
       type: String,
