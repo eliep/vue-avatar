@@ -78,9 +78,7 @@ export default {
       }
 
       const imgBackgroundAndFontStyle = {
-        background: `url('${this.src}') no-repeat`,
-        backgroundSize: `${this.size}px ${this.size}px`,
-        backgroundOrigin: 'content-box'
+        background: `transparent url(${this.src}) no-repeat scroll 0% 0% / ${this.size}px ${this.size}px content-box border-box`
       }
 
       const initialBackgroundAndFontStyle = {
@@ -88,7 +86,7 @@ export default {
         font: Math.floor(this.size / 2.5) + 'px/100px Helvetica, Arial, sans-serif',
         fontWeight: 'bold',
         color: this.fontColor,
-        lineHeight: (this.size + Math.floor(this.size / 20)) + 'px'
+        lineHeight: `${(this.size + Math.floor(this.size / 20))}px`
       }
 
       const backgroundAndFontStyle = (this.isImage)
