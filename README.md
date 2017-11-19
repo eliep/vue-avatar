@@ -1,5 +1,7 @@
 # vue-avatar
 
+[![Build Status](https://travis-ci.org/eliep/vue-avatar.svg?branch=master)](https://travis-ci.org/eliep/vue-avatar)
+
 An avatar component for vue.js.
 
 This component display an avatar image and if none is provided fallback to the
