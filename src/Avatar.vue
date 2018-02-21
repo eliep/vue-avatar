@@ -78,7 +78,7 @@ export default {
       }
 
       const imgBackgroundAndFontStyle = {
-        background: `transparent url(${this.src}) no-repeat scroll 0% 0% / ${this.size}px ${this.size}px content-box border-box`
+        background: `transparent url('${this.src}') no-repeat scroll 0% 0% / ${this.size}px ${this.size}px content-box border-box`
       }
 
       const initialBackgroundAndFontStyle = {
