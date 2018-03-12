@@ -75,7 +75,7 @@ var YourComponent = Vue.extend({
 new Vue({
   ...
   components: {
-    'avatar': Avatar.Avatar
+    'avatar': VueAvatar.Avatar
   },
   ...
 })
