@@ -98,6 +98,7 @@ export default {
         backgroundColor: this.background,
         font: Math.floor(this.size / 2.5) + 'px/100px Helvetica, Arial, sans-serif',
         fontWeight: 'bold',
+        lineHeight: `${(this.size + Math.floor(this.size / 20))}px`,
         color: this.fontColor
       }
 
