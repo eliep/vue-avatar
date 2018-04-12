@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style type="css">
+<style lang="css" scoped>
 .vue-avatar--wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
