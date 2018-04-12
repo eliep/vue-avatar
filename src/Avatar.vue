@@ -4,6 +4,21 @@
   </div>
 </template>
 
+<style type="css">
+.vue-avatar--wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+</style>
+
 <script>
 export default {
   name: 'avatar',
@@ -72,9 +87,7 @@ export default {
       const style = {
         width: `${this.size}px`,
         height: `${this.size}px`,
-        borderRadius: this.rounded ? '50%' : 0,
-        textAlign: 'center',
-        verticalAlign: 'middle'
+        borderRadius: this.rounded ? '50%' : 0
       }
 
       const imgBackgroundAndFontStyle = {
@@ -85,8 +98,7 @@ export default {
         backgroundColor: this.background,
         font: Math.floor(this.size / 2.5) + 'px/100px Helvetica, Arial, sans-serif',
         fontWeight: 'bold',
-        color: this.fontColor,
-        lineHeight: `${(this.size + Math.floor(this.size / 20))}px`
+        color: this.fontColor
       }
 
       const backgroundAndFontStyle = (this.isImage)
