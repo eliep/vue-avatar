@@ -1,16 +1,10 @@
 <template>
+<div>
   <div class="vue-avatar--wrapper" :style="[style, customStyle]">
     <span v-if="!this.src">{{ userInitial }}</span>
   </div>
+</div>
 </template>
-
-<style lang="css">
-.vue-avatar--wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-</style>
 
 <script>
 export default {
@@ -92,6 +86,9 @@ export default {
         font: Math.floor(this.size / 2.5) + 'px/100px Helvetica, Arial, sans-serif',
         fontWeight: 'bold',
         lineHeight: `${(this.size + Math.floor(this.size / 20))}px`,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         color: this.fontColor
       }
 
