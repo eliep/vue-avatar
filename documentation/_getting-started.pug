@@ -5,7 +5,7 @@ a(href='https://github.com/eliep/vue-avatar')
   .row
     .jumbotron
       h1
-        avatar#avatar(username='vue-avatar', :size='70', style='display:inline-block', @avatar-initials='initials')
+        avatar#avatar(username='vue-avatar', :size='70', inline, @avatar-initials='initials')
         |             vue-avatar
       p.lead An avatar component for vue.js
 
@@ -28,7 +28,7 @@ a(href='https://github.com/eliep/vue-avatar')
     h2 Installation
     pre
       code.language-html npm install vue-avatar
- 
+
     h2 Versions
     table(width='50%')
       tbody
@@ -104,65 +104,65 @@ a(href='https://github.com/eliep/vue-avatar')
       tbody
         tr
           td username
-          td  Y 
-          td  - 
-          td  String 
+          td  Y
+          td  -
+          td  String
           td The user name that will be used to compute user initial.
         tr
           td initials
-          td  N 
-          td  - 
-          td  String 
+          td  N
+          td  -
+          td  String
           td Force the displayed initials by overriding the computed ones.
         tr
           td src
-          td  N 
-          td  - 
-          td  String 
+          td  N
+          td  -
+          td  String
           td Path to the avatar image to display.
         tr
           td :customStyle
-          td  N 
-          td  - 
-          td  Object 
+          td  N
+          td  -
+          td  Object
           td A custom style object to override the base styles.
         tr
           td backgroundColor
-          td  N 
-          td  - 
-          td  String 
+          td  N
+          td  -
+          td  String
           td
             | The avatar background color to use if no image is provided. If none
             | is specified, a background color will be picked depending on
             | the user name length.
         tr
           td color
-          td  N 
-          td  - 
-          td  String 
+          td  N
+          td  -
+          td  String
           td
             | The font color used to render the user initials. If none
             | is provided, the background color is used to compute
             | the font color.
         tr
           td :lighten
-          td  N 
-          td  80 
-          td  Number 
+          td  N
+          td  80
+          td  Number
           td
             | A factor by which the background color must be lightened to
             | produce the font color. Number between [-100,100].
         tr
           td :size
-          td  N 
-          td  50 
-          td  Number 
+          td  N
+          td  50
+          td  Number
           td The avatar size in pixel.
         tr
           td :rounded
-          td  N 
-          td  true 
-          td  Boolean 
+          td  N
+          td  true
+          td  Boolean
           td True for a rounded avatar.
 
     h2 Event
@@ -257,22 +257,22 @@ a(href='https://github.com/eliep/vue-avatar')
       | 18 default background colors are available and can be seen below. The
       | background color chosen depends on the username length.
       | This way a username will always have the same background color.
-    avatar.default-avatar(:size='70', username='A')
-    avatar.default-avatar(:size='70', username='BB')
-    avatar.default-avatar(:size='70', username='CCC')
-    avatar.default-avatar(:size='70', username='DDDD')
-    avatar.default-avatar(:size='70', username='EEEEE')
-    avatar.default-avatar(:size='70', username='FFFFFF')
-    avatar.default-avatar(:size='70', username='GGGGGGG')
-    avatar.default-avatar(:size='70', username='HHHHHHHH')
-    avatar.default-avatar(:size='70', username='IIIIIIIII')
+    avatar.default-avatar(inline :size='70', username='A')
+    avatar.default-avatar(inline :size='70', username='BB')
+    avatar.default-avatar(inline :size='70', username='CCC')
+    avatar.default-avatar(inline :size='70', username='DDDD')
+    avatar.default-avatar(inline :size='70', username='EEEEE')
+    avatar.default-avatar(inline :size='70', username='FFFFFF')
+    avatar.default-avatar(inline :size='70', username='GGGGGGG')
+    avatar.default-avatar(inline :size='70', username='HHHHHHHH')
+    avatar.default-avatar(inline :size='70', username='IIIIIIIII')
     br
-    avatar.default-avatar(:size='70', username='JJJJJJJJJJ')
-    avatar.default-avatar(:size='70', username='KKKKKKKKKKK')
-    avatar.default-avatar(:size='70', username='LLLLLLLLLLLL')
-    avatar.default-avatar(:size='70', username='MMMMMMMMMMMMM')
-    avatar.default-avatar(:size='70', username='NNNNNNNNNNNNNN')
-    avatar.default-avatar(:size='70', username='OOOOOOOOOOOOOOO')
-    avatar.default-avatar(:size='70', username='PPPPPPPPPPPPPPPP')
-    avatar.default-avatar(:size='70', username='QQQQQQQQQQQQQQQQQ')
-    avatar.default-avatar(:size='70', username='RRRRRRRRRRRRRRRRRR')
+    avatar.default-avatar(inline :size='70', username='JJJJJJJJJJ')
+    avatar.default-avatar(inline :size='70', username='KKKKKKKKKKK')
+    avatar.default-avatar(inline :size='70', username='LLLLLLLLLLLL')
+    avatar.default-avatar(inline :size='70', username='MMMMMMMMMMMMM')
+    avatar.default-avatar(inline :size='70', username='NNNNNNNNNNNNNN')
+    avatar.default-avatar(inline :size='70', username='OOOOOOOOOOOOOOO')
+    avatar.default-avatar(inline :size='70', username='PPPPPPPPPPPPPPPP')
+    avatar.default-avatar(inline :size='70', username='QQQQQQQQQQQQQQQQQ')
+    avatar.default-avatar(inline :size='70', username='RRRRRRRRRRRRRRRRRR')
