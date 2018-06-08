@@ -24,6 +24,9 @@ export default {
     customStyle: {
       type: Object
     },
+    inline: {
+      type: Boolean
+    },
     size: {
       type: Number,
       default: 50
@@ -84,7 +87,7 @@ export default {
         font: Math.floor(this.size / 2.5) + 'px/100px Helvetica, Arial, sans-serif',
         fontWeight: 'bold',
         lineHeight: `${(this.size + Math.floor(this.size / 20))}px`,
-        display: 'flex',
+        display: this.inline ? 'inline-flex' : 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         color: this.fontColor
