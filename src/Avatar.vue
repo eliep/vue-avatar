@@ -1,9 +1,7 @@
 <template>
-<div>
   <div class="vue-avatar--wrapper" :style="[style, customStyle]">
     <span v-if="!this.src">{{ userInitial }}</span>
   </div>
-</div>
 </template>
 
 <script>
