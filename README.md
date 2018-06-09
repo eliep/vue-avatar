@@ -98,6 +98,11 @@ new Vue({
     <td> - </td>
     <td> String </td>
     <td>Force the displayed initials by overriding the computed ones.</td></tr>
+  <tr><td>inline</td>
+    <td> N </td>
+    <td> false </td>
+    <td> Boolean </td>
+    <td>Uses inline-flex instead of flex</td></tr>
   <tr><td>src</td>
     <td> N </td>
     <td> - </td>
