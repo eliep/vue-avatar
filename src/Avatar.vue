@@ -1,6 +1,6 @@
 <template>
   <div class="vue-avatar--wrapper" :style="[style, customStyle]">
-    <span v-if="!this.src">{{ userInitial }}</span>
+    <span>{{ !this.src ? userInitial : '&zwnj;' }}</span>
   </div>
 </template>
 
@@ -79,7 +79,9 @@ export default {
       }
 
       const imgBackgroundAndFontStyle = {
-        background: `transparent url('${this.src}') no-repeat scroll 0% 0% / ${this.size}px ${this.size}px content-box border-box`
+        background: `transparent url('${this.src}') no-repeat scroll 0% 0% / ${this.size}px ${this.size}px content-box border-box`,
+        display: this.inline ? 'inline-flex' : 'flex',
+        alignItems: 'center'
       }
 
       const initialBackgroundAndFontStyle = {
