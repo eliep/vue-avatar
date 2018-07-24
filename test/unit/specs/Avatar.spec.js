@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import { mount } from '@vue/test-utils'
+
 import Avatar from 'src/Avatar'
 
 describe('Avatar.vue', function () {
@@ -42,18 +44,12 @@ describe('Avatar.vue', function () {
   it('should render an image with the correct \'src\' when given', function () {
     var username = 'Hubert-Félix'
 
-    var vm = new Vue({
-      template: '<div><avatar username="' + username + '" src="path/to/img"></avatar></div>',
-      components: { Avatar }
-    }).$mount()
+    const wrapper = mount(Avatar, { propsData: {
+      username: username,
+      src: 'path/to/img'
+    } })
 
-    var initial = vm.$children[0].initial(username)
-    expect(initial).to.equal('HF')
-
-    /* eslint-disable no-unused-expressions */
-    expect(vm.$el.querySelector('.vue-avatar--wrapper > span')).to.be.null
-    var av = vm.$el.querySelector('.vue-avatar--wrapper')
-    var background = av.style.background // window.getComputedStyle(av,null).width
-    expect(background).to.contain('path/to/img')
+    var backgroundImage = wrapper.element.style.backgroundImage
+    expect(backgroundImage).to.contain('path/to/img')
   })
 })
