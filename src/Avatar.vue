@@ -1,6 +1,6 @@
 <template>
   <div class="vue-avatar--wrapper" :style="[style, customStyle]">
-    <span v-if="!this.src">{{ userInitial }}</span>
+    <span v-show="!this.isImage">{{ userInitial }}</span>
   </div>
 </template>
 
@@ -9,8 +9,7 @@ export default {
   name: 'avatar',
   props: {
     username: {
-      type: String,
-      required: true
+      type: String
     },
     initials: {
       type: String
@@ -55,16 +54,22 @@ export default {
   },
 
   mounted () {
-    this.$emit('avatar-initials', this.username, this.userInitial)
+    if (!this.isImage) {
+      this.$emit('avatar-initials', this.username, this.userInitial)
+    }
   },
 
   computed: {
     background () {
-      return this.backgroundColor || this.randomBackgroundColor(this.username.length, this.backgroundColors)
+      if (!this.isImage) {
+        return this.backgroundColor || this.randomBackgroundColor(this.username.length, this.backgroundColors)
+      }
     },
 
     fontColor () {
-      return this.color || this.lightenColor(this.background, this.lighten)
+      if (!this.isImage) {
+        return this.color || this.lightenColor(this.background, this.lighten)
+      }
     },
 
     isImage () {
@@ -73,9 +78,14 @@ export default {
 
     style () {
       const style = {
+        display: this.inline ? 'inline-flex' : 'flex',
         width: `${this.size}px`,
         height: `${this.size}px`,
-        borderRadius: this.rounded ? '50%' : 0
+        borderRadius: this.rounded ? '50%' : 0,
+        lineHeight: `${(this.size + Math.floor(this.size / 20))}px`,
+        fontWeight: 'bold',
+        alignItems: 'center',
+        justifyContent: 'center'
       }
 
       const imgBackgroundAndFontStyle = {
@@ -85,11 +95,6 @@ export default {
       const initialBackgroundAndFontStyle = {
         backgroundColor: this.background,
         font: Math.floor(this.size / 2.5) + 'px/100px Helvetica, Arial, sans-serif',
-        fontWeight: 'bold',
-        lineHeight: `${(this.size + Math.floor(this.size / 20))}px`,
-        display: this.inline ? 'inline-flex' : 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
         color: this.fontColor
       }
 
@@ -103,8 +108,11 @@ export default {
     },
 
     userInitial () {
-      const initials = this.initials || this.initial(this.username)
-      return initials
+      if (!this.isImage) {
+        const initials = this.initials || this.initial(this.username)
+        return initials
+      }
+      return ''
     }
   },
 

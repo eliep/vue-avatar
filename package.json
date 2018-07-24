@@ -28,6 +28,7 @@
   "main": "dist/vue-avatar.min.js",
   "dependencies": {},
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.20",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
