@@ -89,7 +89,7 @@ new Vue({
 </tr></thead>
 <tbody>
   <tr><td>username</td>
-    <td> Y </td>
+    <td> N </td>
     <td> - </td>
     <td> String </td>
     <td>The user name that will be used to compute user initial.</td></tr>
