@@ -85,7 +85,8 @@ export default {
         lineHeight: `${(this.size + Math.floor(this.size / 20))}px`,
         fontWeight: 'bold',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        textAlign: 'center'
       }
 
       const imgBackgroundAndFontStyle = {
@@ -94,7 +95,7 @@ export default {
 
       const initialBackgroundAndFontStyle = {
         backgroundColor: this.background,
-        font: Math.floor(this.size / 2.5) + 'px/100px Helvetica, Arial, sans-serif',
+        font: Math.floor(this.size / 2.5) + 'px/' + this.size + 'px Helvetica, Arial, sans-serif',
         color: this.fontColor
       }
 
