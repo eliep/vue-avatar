@@ -95,7 +95,7 @@ export default {
 
       const initialBackgroundAndFontStyle = {
         backgroundColor: this.background,
-        font: Math.floor(this.size / 2.5) + 'px/' + this.size + 'px Helvetica, Arial, sans-serif',
+        font: `${Math.floor(this.size / 2.5)}px/${this.size}px Helvetica, Arial, sans-serif`,
         color: this.fontColor
       }
 
