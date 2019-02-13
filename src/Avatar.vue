@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-avatar--wrapper" :style="[style, customStyle]">
+  <div class="vue-avatar--wrapper" :style="[style, customStyle]" aria-hidden="true">
     <span v-show="!this.isImage">{{ userInitial }}</span>
   </div>
 </template>
