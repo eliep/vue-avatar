@@ -29,27 +29,54 @@ describe('Avatar.vue', function () {
   })
 
   it('should render initials if no \'src\' is given', function () {
-    var username = 'Hubert-Félix'
+    const username = 'Hubert-Félix'
 
-    var vm = new Vue({
+    const vm = new Vue({
       template: '<div><avatar username="' + username + '"></avatar></div>',
       components: { Avatar }
     }).$mount()
 
-    var initial = vm.$children[0].initial(username)
+    const initial = vm.$children[0].initial(username)
     expect(initial).to.equal('HF')
     expect(vm.$el.querySelector('.vue-avatar--wrapper > span').textContent).to.contain(initial)
   })
 
-  it('should render an image with the correct \'src\' when given', function () {
-    var username = 'Hubert-Félix'
+  it('should use provided parser to render initials if \'parser\' is provided', function () {
+    const username = 'Dr. John Smith'
+    const parser = (name) => name[4]
 
+    const vm = new Vue({
+      template: `<div><avatar username="${username}" :parser="${parser.toString()}"></avatar></div>`,
+      components: { Avatar }
+    }).$mount()
+
+    const initial = parser(username)
+    expect(initial).to.equal('J')
+    expect(vm.$el.querySelector('.vue-avatar--wrapper > span').textContent).to.equal(initial)
+  })
+
+  it('should be able to use default parser in custom parser', function () {
+    const username = 'Dr. John Smith'
+    const parser = (name, getInitials) => getInitials(name.slice(3))
+
+    const vm = new Vue({
+      template: `<div><avatar username="${username}" :parser="${parser.toString()}"></avatar></div>`,
+      components: { Avatar }
+    }).$mount()
+
+    const initial = parser(username, Avatar.methods.initial)
+    expect(initial).to.equal('JS')
+    expect(vm.$el.querySelector('.vue-avatar--wrapper > span').textContent).to.equal(initial)
+  })
+
+  it('should render an image with the correct \'src\' when given', function () {
+    const username = 'Hubert-Félix'
     const wrapper = mount(Avatar, { propsData: {
       username: username,
       src: 'path/to/img'
     } })
 
-    var backgroundImage = wrapper.element.style.backgroundImage
+    const backgroundImage = wrapper.element.style.backgroundImage
     expect(backgroundImage).to.contain('path/to/img')
     expect(wrapper.element.querySelector('.vue-avatar--wrapper > span').textContent).not.to.contain('HF')
   })

@@ -143,6 +143,12 @@ new Vue({
     <td> true </td>
     <td> Boolean </td>
     <td>True if the avatar must be rounded.</td></tr>
+  <tr><td>:parser</td>
+    <td> N </td>
+    <td> [getInitials()](https://github.com/eliep/vue-avatar/blob/master/src/Avatar.vue#L8-L27) </td>
+    <td> Function </td>
+    <td>Custom parser to manipulate the string (the parser takes
+      2 params: a String and the default parser). It must return a String.</td></tr>
 </tbody>
 </table>
 
