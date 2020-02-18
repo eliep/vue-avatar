@@ -86,7 +86,8 @@ export default {
         fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
-        textAlign: 'center'
+        textAlign: 'center',
+        userSelect: 'none'
       }
 
       const imgBackgroundAndFontStyle = {
