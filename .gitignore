@@ -1,5 +1,6 @@
 .idea
 node_modules/
+dist/
 test/unit/coverage/
 npm-debug.log
 package-lock.json
