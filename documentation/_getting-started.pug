@@ -257,6 +257,18 @@ a(href='https://github.com/eliep/vue-avatar')
                   initials="AS"
                   :size="100"&gt;
                 &lt;/avatar&gt;
+        tr
+          td
+            avatar(username='Luke Skywalker', src='./static/luke-skywalker.png', :size='100')
+          td
+            pre
+              code.language-html.
+                &lt;!-- fallback to initials if image doesn't load --&gt;
+                &lt;avatar
+                  src="./static/luke-skywalker.png"
+                  username="Luke Skywalker"
+                  :size="100"&gt;
+                &lt;/avatar&gt;
 
     h2 Default color
     p

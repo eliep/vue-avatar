@@ -51,5 +51,18 @@ describe('Avatar.vue', function () {
 
     var backgroundImage = wrapper.element.style.backgroundImage
     expect(backgroundImage).to.contain('path/to/img')
+    expect(wrapper.element.querySelector('.vue-avatar--wrapper > span').textContent).not.to.contain('HF')
+  })
+
+  it('should render initials if the \'src\' does not load', function () {
+    var username = 'Hubert-Félix'
+
+    const wrapper = mount(Avatar, { propsData: {
+      username: username,
+      src: 'path/to/img'
+    } })
+    wrapper.setData({ imgError: true })
+
+    expect(wrapper.element.querySelector('.vue-avatar--wrapper > span').textContent).to.contain('HF')
   })
 })

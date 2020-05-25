@@ -1,5 +1,7 @@
 <template>
   <div class="vue-avatar--wrapper" :style="[style, customStyle]" aria-hidden="true">
+    <!-- this img is not displayed; it is used to detect failure-to-load of div background image -->
+    <img v-if="this.isImage" style="display: none" :src="this.src" @error="onImgError"></img>
     <span v-show="!this.isImage">{{ userInitial }}</span>
   </div>
 </template>
@@ -49,7 +51,8 @@ export default {
         '#F44336', '#FF4081', '#9C27B0', '#673AB7',
         '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688',
         '#4CAF50', '#8BC34A', '#CDDC39', /* '#FFEB3B' , */ '#FFC107',
-        '#FF9800', '#FF5722', '#795548', '#9E9E9E', '#607D8B']
+        '#FF9800', '#FF5722', '#795548', '#9E9E9E', '#607D8B'],
+      imgError: false
     }
   },
 
@@ -73,7 +76,7 @@ export default {
     },
 
     isImage () {
-      return Boolean(this.src)
+      return !this.imgError && Boolean(this.src)
     },
 
     style () {
@@ -134,6 +137,10 @@ export default {
       initials = initials.substr(0, 3).toUpperCase()
 
       return initials
+    },
+
+    onImgError (evt) {
+      this.imgError = true
     },
 
     randomBackgroundColor (seed, colors) {
