@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Avatar from 'vue-avatar'
 
+const png = '/static/darth-vader.png'
+
 /* eslint-disable no-new */
 new Vue({
   el: '.container',
@@ -17,12 +19,21 @@ new Vue({
   data: {
     items: [],
     markupLangs: ['pug', 'html'],
-    markupLanguage: 'pug'
+    markupLanguage: 'pug',
+    dynamicSrc: null
   },
 
   methods: {
     initials: function (username, initials) {
       this.items.push({username: username, initials: initials})
     }
+  },
+
+  mounted () {
+    let dynamicChangeSrc  = () => {
+      this.dynamicSrc =  this.dynamicSrc ? null : png
+      setTimeout(dynamicChangeSrc,2000)
+    }
+    dynamicChangeSrc()
   }
 })
