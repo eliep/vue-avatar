@@ -269,6 +269,19 @@ a(href='https://github.com/eliep/vue-avatar')
                   username="Luke Skywalker"
                   :size="100"&gt;
                 &lt;/avatar&gt;
+        tr
+          td
+            avatar(username='Rezero Qin',:src='dynamicSrc', :size='100')
+          td
+            pre
+              code.language-html.
+                &lt;!-- Change the src attribute dynamically --&gt;
+                &lt;avatar
+                  src="dynamicSrc"
+                  username="Rezero Qin"
+                  :size="100"&gt;
+                &lt;/avatar&gt;
+
 
     h2 Default color
     p
