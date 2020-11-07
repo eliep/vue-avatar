@@ -7,6 +7,23 @@
 </template>
 
 <script>
+const getInitials = (username) => {
+  let parts = username.split(/[ -]/)
+  let initials = ''
+
+  for (var i = 0; i < parts.length; i++) {
+    initials += parts[i].charAt(0)
+  }
+
+  if (initials.length > 3 && initials.search(/[A-Z]/) !== -1) {
+    initials = initials.replace(/[a-z]+/g, '')
+  }
+
+  initials = initials.substr(0, 3).toUpperCase()
+
+  return initials
+}
+
 export default {
   name: 'avatar',
   props: {
@@ -42,6 +59,11 @@ export default {
     lighten: {
       type: Number,
       default: 80
+    },
+    parser: {
+      type: Function,
+      default: getInitials,
+      validator: (parser) => typeof parser('John', getInitials) === 'string'
     }
   },
 
@@ -114,7 +136,7 @@ export default {
 
     userInitial () {
       if (!this.isImage) {
-        const initials = this.initials || this.initial(this.username)
+        const initials = this.initials || this.parser(this.username, getInitials)
         return initials
       }
       return ''
@@ -122,22 +144,7 @@ export default {
   },
 
   methods: {
-    initial (username) {
-      let parts = username.split(/[ -]/)
-      let initials = ''
-
-      for (var i = 0; i < parts.length; i++) {
-        initials += parts[i].charAt(0)
-      }
-
-      if (initials.length > 3 && initials.search(/[A-Z]/) !== -1) {
-        initials = initials.replace(/[a-z]+/g, '')
-      }
-
-      initials = initials.substr(0, 3).toUpperCase()
-
-      return initials
-    },
+    initial: getInitials,
 
     onImgError (evt) {
       this.imgError = true
