@@ -11,8 +11,8 @@ a(href='https://github.com/eliep/vue-avatar')
 
     h2 Description
     p
-      | This component display an avatar image and if none is provided fallback to the
-      | user initials.  This component is highly inspired from
+      | This component displays an avatar image and if none provides a fallback to the
+      | user initials.  This component is highly inspired by the 
       a(href='https://github.com/wbinnssmith/react-user-avatar') react-user-avatar
     p
       | Rules used to compute user initials:
@@ -21,7 +21,7 @@ a(href='https://github.com/eliep/vue-avatar')
         li use the first letter of each parts
         li never use more than three letters as initials
         li
-          | if the username is divided in more than three parts and has part
+          | if the username is divided in more than three parts and has a part
           | starting with an uppercase, skip parts starting with a lowercase.
       rules(:items='items')
 
@@ -277,7 +277,8 @@ a(href='https://github.com/eliep/vue-avatar')
                 &lt;!-- fallback to initials if image doesn't load --&gt;
                 &lt;avatar
                   src="./static/luke-skywalker.png"
-                  username="Luke Skywalker"
+                  username="Luke Skywalker"&gt;
+                &lt;/avatar&gt;
         tr
           td
             avatar(username='Dr. John Smith', :parser='(name, getInitials) => getInitials(name.slice(3))', :size='100')
