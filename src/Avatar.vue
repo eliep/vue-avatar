@@ -106,7 +106,7 @@ export default {
         display: this.inline ? 'inline-flex' : 'flex',
         width: `${this.size}px`,
         height: `${this.size}px`,
-        borderRadius: this.rounded ? '50%' : 0,
+        borderRadius: this.rounded ? '50%' : undefined,
         lineHeight: `${(this.size + Math.floor(this.size / 20))}px`,
         fontWeight: 'bold',
         alignItems: 'center',
