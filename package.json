@@ -70,7 +70,7 @@
     "phantomjs-prebuilt": "^2.1.15",
     "pug": "^2.0.0-rc.4",
     "pug-loader": "^2.3.0",
-    "shelljs": "^0.7.8",
+    "shelljs": "^0.8.5",
     "sinon": "^4.0.1",
     "sinon-chai": "^2.14.0",
     "url-loader": "^0.6.2",
